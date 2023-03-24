@@ -9,13 +9,11 @@ import pytest
 import allure
 
 
-class Drivers:
+def test_get_chrome_driver():
+    my_driver = webdriver.Chrome()
+    my_driver.get('https://qa.trado.co.il/')
+    my_driver.maximize_window()
+    assert my_driver.current_url == 'https://qa.trado.co.il/'
 
-    def get_chrome_driver(self):
-        self.my_driver = webdriver.Chrome()
-        self.my_driver.get('https://www.demoblaze.com/index.html')
-        self.my_driver.maximize_window()
 
-    def tearDown(self):
-        sleep(1)
-        self.my_driver.quit()
+test_get_chrome_driver()
