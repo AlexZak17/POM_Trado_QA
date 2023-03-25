@@ -7,13 +7,16 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.alert import Alert
 import pytest
 import allure
+import unittest
 
 
-def test_get_chrome_driver():
-    my_driver = webdriver.Chrome()
-    my_driver.get('https://qa.trado.co.il/')
-    my_driver.maximize_window()
-    assert my_driver.current_url == 'https://qa.trado.co.il/'
+class Drivers(unittest.TestCase):
+    def setUp(self):
+        self.my_driver = webdriver.Chrome()
+        self.my_driver.get('https://qa.trado.co.il/')
+        self.my_driver.maximize_window()
+        yield
+        self.my_driver.quit()
 
 
-test_get_chrome_driver()
+
