@@ -11,14 +11,22 @@ class HomePage:
 
     def search_bar_send_keys(self, keys):
         td.WDW(self.my_driver, 5).until(td.EC.visibility_of_element_located((*hl.HeaderLocators.search_bar,))).click()
-        td.sleep(2)
-        td.WDW(self.my_driver, 5).until(td.EC.visibility_of_element_located((*hl.HeaderLocators.search_bar,))).send_keys(keys)
-        td.WDW(self.my_driver, 5).until(td.EC.visibility_of_element_located((*hl.HeaderLocators.search_bar,))).send_keys(td.Keys.RETURN)
+        td.WDW(self.my_driver, 5).until(td.EC.visibility_of_element_located((*hl.HeaderLocators.search_bar,))).send_keys(keys, td.Keys.RETURN)
 
     def vi_of_search_result(self):
         td.WDW(self.my_driver, 5).until(td.EC.visibility_of_element_located((*hl.HeaderLocators.first_search_res,)))
 
     def clear_search_bar(self):
-         td.WDW(self.my_driver, 5).until(td.EC.visibility_of_element_located((*hl.HeaderLocators.search_bar,))).clear()
-         td.sleep(2)
+         self.my_driver.find_element((*hl.HeaderLocators.search_bar,)).clear()
 
+    def hello_guest_button_click(self):
+        td.WDW(self.my_driver, 5).until(td.EC.visibility_of_element_located((*hl.HeaderLocators.hello_guest_button,))).click()
+
+
+class PopUpWindows:
+    def __init__(self, my_driver):
+        self.my_driver = my_driver
+
+    def choose_cocktail(self):
+        td.WDW(self.my_driver, 5).until(td.EC.visibility_of_element_located((*hl.PopUpWindows.cocktail_button,))).click()
+        td.WDW(self.my_driver, 5).until(td.EC.visibility_of_element_located((*hl.PopUpWindows.button_save,))).click()
