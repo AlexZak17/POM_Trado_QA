@@ -12,14 +12,13 @@ db_name = "trado_qa"
 # Function to create MongoDB connection
 def create_mongo_connection(user_name, encoded_password, db_name):
     # Connect to MongoDB using the given credentials and return the database object
-    client = pymongo.MongoClient(
-        f"mongodb+srv://{user_name}:{encoded_password}@cluster0.qnr3p.mongodb.net/{db_name}?retryWrites=true&w=majority")
+    client = pymongo.MongoClient(f"mongodb+srv://{user_name}:{encoded_password}@cluster0.qnr3p.mongodb.net/{db_name}?retryWrites=true&w=majority")
     db = client[db_name]
     return db
 
 
 # Function to test the MongoDB connection
-def test_connection(db):
+def check_connection(db):
     try:
         db.command("ping")
         print("Connected to MongoDB.")
@@ -38,7 +37,8 @@ def get_collections(db):
 
 def display_collections(db):
     collections = db.list_collection_names()
-    print(f'Collections in {db_name}: {collections}')
+    for collection in collections:
+        print(f'Collections: {collection}')
     return collections
 
 # Function to display document count and an example document for each collection in the given database
@@ -92,7 +92,7 @@ def get_distinct_key_values(db, collection_name, key):
 # Function to test the stock status of products in the 'products' collection
 
 
-def test_product_stock(db):
+def check_product_stock(db):
     products = db['products']
     out_of_stock_products = products.count_documents({"productStock": 0})
     print(f"There are {out_of_stock_products} out-of-stock products.")
@@ -100,7 +100,7 @@ def test_product_stock(db):
 # Function to test the order status in the 'orders' collection
 
 
-def test_orders(db):
+def check_orders(db):
     orders = db['orders']
     pending_orders = orders.count_documents({"status": "ready"})
     print(f"There are {pending_orders} ready orders.")
@@ -110,7 +110,7 @@ def test_orders(db):
 
 def main():
     db = create_mongo_connection(user_name, encoded_password, db_name)
-    test_connection(db)
+    check_connection(db)
     display_collections(db)
 
     # Main menu
@@ -150,9 +150,9 @@ def main():
             distinct_values = get_distinct_key_values(db, collection_name, key)
             print(f"The distinct {key} values in {collection_name} are: {distinct_values}")
         elif choice == "6":
-            test_product_stock(db)
+            check_product_stock(db)
         elif choice == "7":
-            test_orders(db)
+            check_orders(db)
         elif choice == "8":
             break
         else:
