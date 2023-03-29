@@ -10,10 +10,10 @@ import allure
 import unittest
 
 
-class ChromeDriver(unittest.TestCase):
+class EdgeDriver(unittest.TestCase):
 
     def setUp(self):
-        self.my_driver = webdriver.Chrome()
+        self.my_driver = webdriver.Edge()
         self.my_driver.get('https://qa.trado.co.il/')
         self.my_driver.maximize_window()
         self.my_driver.find_element(By.XPATH, '//*[@id="root"]/div/div[4]/div/span').click()
@@ -21,11 +21,3 @@ class ChromeDriver(unittest.TestCase):
     def tearDown(self):
         sleep(1)
         self.my_driver.quit()
-
-
-
-
-
-
-
-
