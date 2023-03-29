@@ -30,4 +30,7 @@ class LoginPage:
     def facebook_btn_click(self):
         td.WDW(self.my_driver, 5).until(td.EC.visibility_of_element_located((*llc.LoginLocators.facebook_btn,))).click()
 
+    def remember_me_btn_click(self):
+        td.WDW(self.my_driver, 5).until(td.EC.visibility_of_element_located((*llc.LoginLocators.remember_me_btn,))).click()
+
 

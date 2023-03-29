@@ -13,3 +13,4 @@ class LoginLocators(object):
     connect_btn = (td.By.XPATH, '//*[@id="root"]/div/div[2]/header/div/div/a[1]/span[1]')
     google_btn = (td.By.XPATH, '//*[@id="root"]/div/div[4]/div/div/div/div/div[3]/div[1]/button')
     facebook_btn = (td.By.XPATH, '//*[@id="root"]/div/div[4]/div/div/div/div/div[3]/div[1]/span/button')
+    remember_me_btn = (td.By.XPATH, '//*[@id="root"]/div/div[4]/div/div/div/div/form/div[1]/div[2]/span/span/span/i')

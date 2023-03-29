@@ -1,6 +1,7 @@
 import allure
 import Services.utilities.driver_chrome_Trado as td
 import Services.pages.home_page as hp
+import Services.constractors.home_page_locators as hpl
 import Services.constractors.login_locators as llc
 import Services.pages.login_pages as lp
 import Services.constractors.login_locators as ll
@@ -80,3 +81,23 @@ class TestLogin(td.ChromeDriver, hp.HomePage, hp.PopUpWindows, lp.LoginPage):
         self.my_driver.get("https://www.facebook.com/v2.3/dialog/oauth?app_id=356713278727771&auth_type=&cbt=1680078421795&channel_url=https%3A%2F%2Fstaticxx.facebook.com%2Fx%2Fconnect%2Fxd_arbiter%2F%3Fversion%3D46%23cb%3Df5dcb328ae1a88%26domain%3Dqa.trado.co.il%26is_canvas%3Dfalse%26origin%3Dhttps%253A%252F%252Fqa.trado.co.il%252Fff5da19a3284fc%26relation%3Dopener&client_id=356713278727771&display=popup&domain=qa.trado.co.il&e2e=%7B%7D&fallback_redirect_uri=https%3A%2F%2Fqa.trado.co.il%2F&locale=en_US&logger_id=f3f4826ddc37424&origin=1&redirect_uri=https%3A%2F%2Fstaticxx.facebook.com%2Fx%2Fconnect%2Fxd_arbiter%2F%3Fversion%3D46%23cb%3Df36c7ccfd41bb14%26domain%3Dqa.trado.co.il%26is_canvas%3Dfalse%26origin%3Dhttps%253A%252F%252Fqa.trado.co.il%252Fff5da19a3284fc%26relation%3Dopener%26frame%3Df2686a781e7a2f8&response_type=token%2Csigned_request%2Cgraph_domain&return_scopes=false&scope=public_profile%2Cemail&sdk=joey&version=v2.3")
         td.sleep(3)
         assert 'facebook.com' in self.my_driver.current_url
+
+    def test_29_remember_me_button(self):
+        hp.HomePage.hello_guest_button_click(self)
+        hp.PopUpWindows.choose_cocktail(self)
+        hp.HomePage.hello_guest_button_click(self)
+        lp.LoginPage.wait_until_phone_field_is_displayed(self)
+        self.my_driver.find_element(*ll.LoginLocators.phone_field, ).send_keys('0527088611')
+        self.my_driver.find_element(*ll.LoginLocators.remember_me_btn).click()
+        self.my_driver.find_element(*ll.LoginLocators.login_button, ).click()
+        td.WDW(self.my_driver, 5).until(td.EC.visibility_of_element_located((*llc.LoginLocators.code_input,)))
+        lp.LoginPage.input_valid_code(self)
+        self.my_driver.find_element(*llc.LoginLocators.confirm_code_button, ).click()
+        td.sleep(5)
+        lp.LoginPage.disconnect_btn_click(self)
+        td.WDW(self.my_driver, 5).until(td.EC.visibility_of_element_located((*hpl.HeaderLocators.hello_guest_button,)))
+        hp.HomePage.hello_guest_button_click(self)
+        lp.LoginPage.wait_until_phone_field_is_displayed(self)
+        self.my_driver.find_element(*ll.LoginLocators.phone_field, ).send_keys('0527088611')
+        self.my_driver.find_element(*ll.LoginLocators.login_button, ).click()
+        self.assertIsNone(self.my_driver.find_element(*llc.LoginLocators.code_input,).is_displayed())
