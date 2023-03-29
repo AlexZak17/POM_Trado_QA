@@ -9,6 +9,10 @@ class HeaderLocators(object):
     zero_results = (td.By.XPATH, '//*[@id="root"]/div/div[2]/header/div/div/div/div[1]/h3')
 
 
+class BodyLocators(object):
+    sales_btn = (td.By.XPATH, '//*[@id="root"]/div/div[2]/div[2]/div/div/div[1]/div/div/div[2]/a[1]')
+
+
 class PopUpWindows(object):
     cocktail_button = (td.By.XPATH, '//*[@id="root"]/div/div[4]/div/div/div/div[3]/div[1]')
     button_save = (td.By.XPATH, '//*[@id="root"]/div/div[4]/div/div/div/button')

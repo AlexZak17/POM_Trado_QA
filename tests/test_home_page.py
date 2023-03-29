@@ -43,4 +43,20 @@ class TestHomePage(td.ChromeDriver, hp.HomePage, hp.PopUpWindows, lp.LoginPage):
         lp.LoginPage.wait_until_phone_field_is_displayed(self)
         assert self.my_driver.find_element(*llc.LoginLocators.phone_field,)
 
+    def test_5_sales_btn(self):
+        hp.HomePage.sales_btn_click(self)
+        hp.PopUpWindows.choose_cocktail(self)
+        td.sleep(3)
+        assert "מבצעים" in self.my_driver.find_element(td.By.CLASS_NAME, 'productsList_sectionName').get_attribute('textContent')
+
+    def test_count_of_products(self):
+        product_container_sales = self.my_driver.find_element(td.By.CLASS_NAME, 'productsList_list').get_attribute('childElementCount')
+        print(f'\ncount of products in sales is: {product_container_sales}')
+        self.my_driver.get('https://qa.trado.co.il/?sectionName=%D7%97%D7%98%D7%99%D7%A4%D7%99%D7%9D')
+        hp.PopUpWindows.choose_cocktail(self)
+        td.sleep(2)
+        product_container_snacks = self.my_driver.find_element(td.By.CLASS_NAME, 'productsList_list').get_attribute('childElementCount')
+        print(f'\ncount of products in snacks is: {product_container_snacks}')
+
+
 
