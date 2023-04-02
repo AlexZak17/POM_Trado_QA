@@ -25,8 +25,8 @@ def get_specific_key_value(db, collection_name, document_id, key):
     else:
         return None
 
+
 def alex_SMS_code():
     db = create_mongo_connection(user_name, encoded_password, db_name)
     code_numbers = get_specific_key_value(db, "users", ID_alex, "loginCode")
-    print(code_numbers)
     return code_numbers

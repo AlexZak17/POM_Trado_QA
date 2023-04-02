@@ -10,7 +10,8 @@ class HeaderLocators(object):
 
 
 class BodyLocators(object):
-    sales_btn = (td.By.XPATH, '//*[@id="root"]/div/div[2]/div[2]/div/div/div[1]/div/div/div[2]/a[1]')
+    sort_btn = (td.By.XPATH, '//*[@id="root"]/div/div[2]/div[2]/div/div/div[2]/div/div[2]/div[2]/div[3]/div/select')
+
 
 
 class PopUpWindows(object):

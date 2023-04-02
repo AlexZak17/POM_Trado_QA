@@ -24,13 +24,6 @@ class HomePage:
     def hello_guest_button_click(self):
         td.WDW(self.my_driver, 5).until(td.EC.visibility_of_element_located((*hl.HeaderLocators.hello_guest_button,))).click()
 
-    def search_drop_down(self):
-        x = td.WDW(self.my_driver, 5).until(td.EC.visibility_of_element_located((*hpl.HeaderLocators.first_search_res,)))
-        return x
-
-    def sales_btn_click(self):
-        td.WDW(self.my_driver, 5).until(td.EC.visibility_of_element_located((*hl.BodyLocators.sales_btn,))).click()
-
 
 class PopUpWindows:
     def __init__(self, my_driver):
