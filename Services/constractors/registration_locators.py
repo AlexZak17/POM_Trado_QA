@@ -8,3 +8,7 @@ class RegistrationLocators(object):
     terms_of_use_btn = (td.By.XPATH, '//*[@id="root"]/div/div[4]/div/div/div/div/form/div[1]/div[3]/span')
     mailing_lst_btn = (td.By.XPATH, '//*[@id="root"]/div/div[4]/div/div/div/div/form/div[1]/div[4]/span')
     registration_done_btn = (td.By.XPATH, '//*[@id="root"]/div/div[4]/div/div/div/div/form/input')
+    twitter_btn = (td.By.XPATH, '//*[@id="root"]/div/div[4]/div/div/div/div/div[3]/div[1]/div')
+    google_btn = (td.By.XPATH, '//*[@id="root"]/div/div[4]/div/div/div/div/div[3]/div[1]/button')
+    facebook_btn = (td.By.XPATH, '//*[@id="root"]/div/div[4]/div/div/div/div/div[3]/div[1]/span/button')
+    terms_of_use_msg = (td.By.XPATH, '//*[@id="root"]/div/div[4]/div/div/div/div/form/div[3]')

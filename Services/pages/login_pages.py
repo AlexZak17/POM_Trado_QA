@@ -33,6 +33,9 @@ class LoginPage:
         actions.click(hidden_submenu)
         actions.perform()
 
+    def twitter_btn_click(self):
+        td.WDW(self.my_driver, 5).until(td.EC.visibility_of_element_located((*llc.LoginLocators.twitter_btn,))).click()
+
     def google_btn_click(self):
         td.WDW(self.my_driver, 5).until(td.EC.visibility_of_element_located((*llc.LoginLocators.google_btn,))).click()
 

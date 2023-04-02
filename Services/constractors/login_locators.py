@@ -11,6 +11,7 @@ class LoginLocators(object):
     invalid_phone_number_msg = (td.By.XPATH, '//*[@id="root"]/div/div[4]/div/div/div/div/form/div[1]/div[1]/div')
     disconnect_btn = (td.By.CLASS_NAME, 'header_logOut')
     connect_btn = (td.By.XPATH, '//*[@id="root"]/div/div[2]/header/div/div/a[1]/span[1]')
+    twitter_btn = (td.By.XPATH, '//*[@id="root"]/div/div[4]/div/div/div/div/div[3]/div[1]/div')
     google_btn = (td.By.XPATH, '//*[@id="root"]/div/div[4]/div/div/div/div/div[3]/div[1]/button')
     facebook_btn = (td.By.XPATH, '//*[@id="root"]/div/div[4]/div/div/div/div/div[3]/div[1]/span/button')
     remember_me_btn = (td.By.XPATH, '//*[@id="root"]/div/div[4]/div/div/div/div/form/div[1]/div[2]/span')
