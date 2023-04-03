@@ -1,4 +1,5 @@
 import requests
+import allure
 
 
 class TestFilterCheck:
@@ -11,6 +12,7 @@ class TestFilterCheck:
         "Connection": "keep-alive"
     }
 
+    @allure.description('test status code valid while sorting')
     def test_post_filter_from_low_to_high(self):
         response = requests.post(self.url, headers=self.headers)
         assert response.status_code == 200, f"Expected status code 200, but got {response.status_code}"

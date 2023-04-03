@@ -5,7 +5,7 @@ import Services.constractors.login_locators as llc
 import Services.pages.login_pages as lp
 
 
-class TestLogin(td.ChromeDriver, hp.HomePage, hp.PopUpWindows, lp.LoginPage):
+class TestLogin(td.ChromeDriver, hp.HomePage, lp.LoginPage):
     @allure.description('test that checks if the user can login to site with valid user phone number')
     @allure.severity('Critical')
     def test_16_login_valid(self):
