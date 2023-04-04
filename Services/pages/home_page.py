@@ -1,6 +1,5 @@
 import Services.utilities.driver_chrome_Trado as td
 import Services.constractors.home_page_locators as hl
-import Services.constractors.home_page_locators as hpl
 
 
 class HomePage:
